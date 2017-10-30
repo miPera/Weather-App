@@ -1,16 +1,24 @@
 html, body {
   background-color: white;
-  font-family: Roboto, Helvetica, sans-serif;
+  font-family: 'Heebo', sans-serif;
+  font-size: 15px;
 }
 
-h2 {
+header, p, .footer {
   text-align: center;
 }
 
-p {
-  text-align: center;
+.heading {
+  display: inline-block;
+  padding: 15px;
+  margin: 10px;
 }
 
-.footer {
-  text-align: center;
+#tree-icon {
+  margin: 0.5em 0;
+  margin-left: 8px;
+}
+
+.credits {
+  font-size: 10px;
 }
