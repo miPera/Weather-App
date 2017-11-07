@@ -28,7 +28,12 @@ function getWeather(location) {
     url: urlString,
     type: 'GET',
     success: function(result) {
-      alert("City: " + result.name + "\n" + result.sys.country);
+      alert("City: " + result.name + "\n" +
+            "Country: "+ result.sys.country + "\n" + 
+            "Temperature: " + (Math.round(result.main.temp * 10) / 10) + + " " + String.fromCharCode(176) + "\n" +
+            "Unit: C \n" +
+            "Description: " + result.weather[0].main
+           );
     },
     error: function(result) {
       alert("ERROR: Weather not found!");
