@@ -4,7 +4,7 @@ html, body {
   font-size: 15px;
 }
 
-header, p, .footer {
+header, p, .footer, h3, h2  {
   text-align: center;
 }
 
@@ -21,4 +21,13 @@ header, p, .footer {
 
 .credits {
   font-size: 10px;
+}
+
+#loading-info {
+    width: 655px;
+    margin: auto;
+}
+
+#weather-info {
+  display: none;
 }

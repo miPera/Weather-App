@@ -2,10 +2,12 @@
 Weather API code credit: https://codepen.io/freeCodeCamp/pen/bELRjV?editors=1010
 */
 var api = "https://fcc-weather-api.glitch.me/api/current?"; //api url
+var celsiusUnit = "C";
+var farenheightUnit = "F";
 
 $(document).ready(function() {
   alert("Obtaining your location...");
-  var location = getLocation();
+  getLocation();
 });
 
 function getLocation() {
@@ -28,15 +30,26 @@ function getWeather(location) {
     url: urlString,
     type: 'GET',
     success: function(result) {
-      alert("City: " + result.name + "\n" +
-            "Country: "+ result.sys.country + "\n" + 
-            "Temperature: " + (Math.round(result.main.temp * 10) / 10) + + " " + String.fromCharCode(176) + "\n" +
-            "Unit: C \n" +
-            "Description: " + result.weather[0].main
-           );
+      switchVisible();
+      $("#city-state").html(result.name + ", " + result.sys.country);
+      $("#temp-unit").html((Math.round(result.main.temp * 10) / 10) + + " " + String.fromCharCode(176) + " " + celsiusUnit);
     },
     error: function(result) {
-      alert("ERROR: Weather not found!");
+      alert("ERROR: Weather data not found!");
     }
   });
+}
+
+//https://stackoverflow.com/questions/25981198/how-to-hide-one-div-and-show-another-div-using-button-onclick
+function switchVisible() {
+  if (document.getElementById('loading-info')) {
+    if (document.getElementById('loading-info').style.display == 'none') {
+      document.getElementById('loading-info').style.display = 'block';
+      document.getElementById('weather-info').style.display = 'none';
+    }
+    else {
+      document.getElementById('loading-info').style.display = 'none';
+      document.getElementById('weather-info').style.display = 'block';
+    }
+  }
 }
